@@ -101,43 +101,30 @@ Role.destroy_all
 
 
 warner_bros = Studio.new
-warner_bros["name"] = "Warner Bros"
+warner_bros.name = "Warner Bros"
 warner_bros.save
 
-batmin_begins = Movie.new
-batmin_begins["title"] = "Batman Begins"
-batmin_begins["year_released"] = 2005
-batmin_begins["rated"] = "PG-13"
-batmin_begins.save
+batman_begins = Movie.new
+batman_begins.title = "Batman Begins"
+batman_begins.year_released = 2005
+batman_begins.rated = "PG-13"
+batman_begins.studio = Studio.find_by({"name" => "Warner Bros"})
+batman_begins.save
 
 the_dark_knight = Movie.new
-the_dark_knight["title"] = "The Dark Knight"
-the_dark_knight["year_released"] = 2008
-the_dark_knight["rated"] = "PG-13"
+the_dark_knight.title = "The Dark Knight"
+the_dark_knight.year_released = 2008
+the_dark_knight.rated = "PG-13"
+the_dark_knight.studio = Studio.find_by({"name" => "Warner Bros"})
 the_dark_knight.save
 
 
 the_dark_knight_rises = Movie.new
-the_dark_knight_rises["title"] = "The Dark Knight Rises"
-the_dark_knight_rises["year_released"] = 2013
-the_dark_knight_rises["rated"] = "PG-13"
+the_dark_knight_rises.title = "The Dark Knight Rises"
+the_dark_knight_rises.year_released = 2013
+the_dark_knight_rises.rated = "PG-13"
+the_dark_knight_rises.studio = Studio.find_by({"name" => "Warner Bros"})
 the_dark_knight_rises.save
-
-# Batman Begins          Christian Bale        Bruce Wayne
-# Batman Begins          Michael Caine         Alfred
-# Batman Begins          Liam Neeson           Ra's Al Ghul
-# Batman Begins          Katie Holmes          Rachel Dawes
-# Batman Begins          Gary Oldman           Commissioner Gordon
-# The Dark Knight        Christian Bale        Bruce Wayne
-# The Dark Knight        Heath Ledger          Joker
-# The Dark Knight        Aaron Eckhart         Harvey Dent
-# The Dark Knight        Michael Caine         Alfred
-# The Dark Knight        Maggie Gyllenhaal     Rachel Dawes
-# The Dark Knight Rises  Christian Bale        Bruce Wayne
-# The Dark Knight Rises  Gary Oldman           Commissioner Gordon
-# The Dark Knight Rises  Tom Hardy             Bane
-# The Dark Knight Rises  Joseph Gordon-Levitt  John Blake
-# The Dark Knight Rises  Anne Hathaway         Selina Kyle
 
 
 
@@ -185,22 +172,6 @@ anne_hathaway.save
 
 puts "Actor: #{Actor.all.count}"
 
-
-# Batman Begins          Christian Bale        Bruce Wayne
-# Batman Begins          Michael Caine         Alfred
-# Batman Begins          Liam Neeson           Ra's Al Ghul
-# Batman Begins          Katie Holmes          Rachel Dawes
-# Batman Begins          Gary Oldman           Commissioner Gordon
-# The Dark Knight        Christian Bale        Bruce Wayne
-# The Dark Knight        Heath Ledger          Joker
-# The Dark Knight        Aaron Eckhart         Harvey Dent
-# The Dark Knight        Michael Caine         Alfred
-# The Dark Knight        Maggie Gyllenhaal     Rachel Dawes
-# The Dark Knight Rises  Christian Bale        Bruce Wayne
-# The Dark Knight Rises  Gary Oldman           Commissioner Gordon
-# The Dark Knight Rises  Tom Hardy             Bane
-# The Dark Knight Rises  Joseph Gordon-Levitt  John Blake
-# The Dark Knight Rises  Anne Hathaway         Selina Kyle
 
 bruce_wayne = Role.new
 bruce_wayne["character_name"] = "Bruce Wayne"
@@ -252,6 +223,18 @@ puts ""
 
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
+
+
+
+Movie.all.each do |movie|
+  puts "Title: #{movie.title}"
+  puts "Year Released: #{movie.year_released}"
+  puts "Rated: #{movie.rated}"
+  puts "Studio: #{movie.studio.name}"
+  puts ""
+end
+
+
 
 # Prints a header for the cast output
 puts ""
