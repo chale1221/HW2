@@ -99,8 +99,151 @@ Role.destroy_all
 # Do not use hard-coded foreign key IDs.
 # TODO!
 
-don")
 
+warner_bros = Studio.new
+warner_bros["name"] = "Warner Bros"
+warner_bros.save
+
+batmin_begins = Movie.new
+batmin_begins["title"] = "Batman Begins"
+batmin_begins["year_released"] = 2005
+batmin_begins["rated"] = "PG-13"
+batmin_begins.save
+
+the_dark_knight = Movie.new
+the_dark_knight["title"] = "The Dark Knight"
+the_dark_knight["year_released"] = 2008
+the_dark_knight["rated"] = "PG-13"
+the_dark_knight.save
+
+
+the_dark_knight_rises = Movie.new
+the_dark_knight_rises["title"] = "The Dark Knight Rises"
+the_dark_knight_rises["year_released"] = 2013
+the_dark_knight_rises["rated"] = "PG-13"
+the_dark_knight_rises.save
+
+# Batman Begins          Christian Bale        Bruce Wayne
+# Batman Begins          Michael Caine         Alfred
+# Batman Begins          Liam Neeson           Ra's Al Ghul
+# Batman Begins          Katie Holmes          Rachel Dawes
+# Batman Begins          Gary Oldman           Commissioner Gordon
+# The Dark Knight        Christian Bale        Bruce Wayne
+# The Dark Knight        Heath Ledger          Joker
+# The Dark Knight        Aaron Eckhart         Harvey Dent
+# The Dark Knight        Michael Caine         Alfred
+# The Dark Knight        Maggie Gyllenhaal     Rachel Dawes
+# The Dark Knight Rises  Christian Bale        Bruce Wayne
+# The Dark Knight Rises  Gary Oldman           Commissioner Gordon
+# The Dark Knight Rises  Tom Hardy             Bane
+# The Dark Knight Rises  Joseph Gordon-Levitt  John Blake
+# The Dark Knight Rises  Anne Hathaway         Selina Kyle
+
+
+
+christian_bale = Actor.new
+christian_bale["name"] = "Christian Bale"
+christian_bale.save
+ 
+michael_cain = Actor.new
+michael_cain["name"] = "Michael Caine"
+michael_cain.save
+
+liamn_neeson = Actor.new
+liamn_neeson["name"] = "Liam Neeson"
+liamn_neeson.save
+
+katie_holmes = Actor.new
+katie_holmes["name"] = "Katie Holmes"
+katie_holmes.save
+
+gary_oldman = Actor.new
+gary_oldman["name"] = "Gary Oldman"
+gary_oldman.save
+
+heath_ledger = Actor.new
+heath_ledger["name"] = "Heath ledger"
+heath_ledger.save
+
+aaron_echkart = Actor.new
+aaron_echkart["name"] = "Aaron Eckhart"
+aaron_echkart.save
+
+maggie_gyllenhal = Actor.new
+maggie_gyllenhal["name"] = "Maggie Gyllenhaal"
+maggie_gyllenhal.save
+
+tom_hardy = Actor.new
+tom_hardy["name"] = "Tom Hardy"
+tom_hardy.save
+
+
+anne_hathaway = Actor.new
+anne_hathaway["name"] = "Anne Hathwway"
+anne_hathaway.save
+
+
+puts "Actor: #{Actor.all.count}"
+
+
+# Batman Begins          Christian Bale        Bruce Wayne
+# Batman Begins          Michael Caine         Alfred
+# Batman Begins          Liam Neeson           Ra's Al Ghul
+# Batman Begins          Katie Holmes          Rachel Dawes
+# Batman Begins          Gary Oldman           Commissioner Gordon
+# The Dark Knight        Christian Bale        Bruce Wayne
+# The Dark Knight        Heath Ledger          Joker
+# The Dark Knight        Aaron Eckhart         Harvey Dent
+# The Dark Knight        Michael Caine         Alfred
+# The Dark Knight        Maggie Gyllenhaal     Rachel Dawes
+# The Dark Knight Rises  Christian Bale        Bruce Wayne
+# The Dark Knight Rises  Gary Oldman           Commissioner Gordon
+# The Dark Knight Rises  Tom Hardy             Bane
+# The Dark Knight Rises  Joseph Gordon-Levitt  John Blake
+# The Dark Knight Rises  Anne Hathaway         Selina Kyle
+
+bruce_wayne = Role.new
+bruce_wayne["character_name"] = "Bruce Wayne"
+bruce_wayne.save
+ 
+alfred = Role.new
+alfred["character_name"] = "Alfred"
+alfred.save
+
+ras_al_ghul = Role.new
+ras_al_ghul["character_name"] = "Ra's Al Ghul"
+ras_al_ghul.save
+
+rachel_dawes = Role.new
+rachel_dawes["character_name"] = "Rachel Dawes"
+rachel_dawes.save
+
+comissioner_gordon = Role.new
+comissioner_gordon["character_name"] = "Commissioner Gordon"
+comissioner_gordon.save
+
+joker = Role.new
+joker["character_name"] = "Joker"
+joker.save
+
+harvey_dent = Role.new
+harvey_dent["character_name"] = "Harvey Dent"
+harvey_dent.save
+
+bane = Role.new
+bane["character_name"] = "Bane"
+bane.save
+
+john_blake = Role.new
+john_blake["character_name"] = "John Blake"
+john_blake.save
+
+
+selina_kyle = Role.new
+selina_kyle["character_name"] = "Selina Kyle"
+selina_kyle.save
+
+puts "Role: #{Role.all.count}"
 
 # Prints a header for the movies output
 puts "Movies"
@@ -119,13 +262,6 @@ puts ""
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
 
-movies.each do |movie|
-    puts movie.title
-    movie.roles.each do |role|
-      puts "#{role.actor.name} as #{role.character_name}"
-    end
-    puts ""
-  end
+
   
   # Close the database connection
-  db.close

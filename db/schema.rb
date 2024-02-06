@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_06_010027) do
     t.datetime "updated_at", null: false
   end
 
-# Studio in the migration file autocorrected before
+# Studio in the migration file autocorrected beforehere; should have referenced studio number (integer)
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
