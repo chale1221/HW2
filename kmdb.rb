@@ -71,59 +71,26 @@
 # Use `Model.destroy_all` code.
 # TODO!
 
-Model.destroy_all
+Studio.destroy_all
+Movie.destroy_all
+Actor.destroy_all
+Role.destroy_all
 
 # Generate models and tables, according to the domain model.
 # TODO!
 
+
+
 # Define the models
-class Studio < ActiveRecord::Base
-  has_many :movies
-end
 
-class Movie < ActiveRecord::Base
-  belongs_to :studio
-  has_many :roles
-  has_many :actors, through: :roles
-end
-
-class Actor < ActiveRecord::Base
-  has_many :roles
-  has_many :movies, through: :roles
-end
-
-class Role < ActiveRecord::Base
-  belongs_to :movie
-  belongs_to :actor
-end
 
 # Generate migration files for the models
-ActiveRecord::Schema.define do
-    create_table :studios do |t|
-      t.string :name
-    end
-  
-    create_table :movies do |t|
-      t.string :title
-      t.integer :year_released
-      t.string :rated
-      t.belongs_to :studio
-    end
-  
-    create_table :actors do |t|
-      t.string :name
-    end
-  
-    create_table :roles do |t|
-      t.belongs_to :movie
-      t.belongs_to :actor
-      t.string :character_name
-    end
-  end
+
+
 
 
 # Establish the connection to the database
-ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'your_database_file.db')
+
 
 
 
@@ -132,31 +99,7 @@ ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'your_data
 # Do not use hard-coded foreign key IDs.
 # TODO!
 
-Studio.create(name: "Warner Bros.")
-
-Movie.create(title: "Batman Begins", year_released: 2005, rated: "PG-13", studio: Studio.first)
-Movie.create(title: "The Dark Knight", year_released: 2008, rated: "PG-13", studio: Studio.first)
-Movie.create(title: "The Dark Knight Rises", year_released: 2012, rated: "PG-13", studio: Studio.first)
-
-Actor.create(name: "Christian Bale")
-Actor.create(name: "Michael Caine")
-Actor.create(name: "Liam Neeson")
-Actor.create(name: "Katie Holmes")
-Actor.create(name: "Gary Oldman")
-Actor.create(name: "Heath Ledger")
-Actor.create(name: "Aaron Eckhart")
-Actor.create(name: "Maggie Gyllenhaal")
-Actor.create(name: "Tom Hardy")
-Actor.create(name: "Joseph Gordon-Levitt")
-Actor.create(name: "Anne Hathaway")
-
-batman_begins = Movie.find_by(title: "Batman Begins")
-
-Role.create(movie: batman_begins, actor: Actor.find_by(name: "Christian Bale"), character_name: "Bruce Wayne")
-Role.create(movie: batman_begins, actor: Actor.find_by(name: "Michael Caine"), character_name: "Alfred")
-Role.create(movie: batman_begins, actor: Actor.find_by(name: "Liam Neeson"), character_name: "Ra's Al Ghul")
-Role.create(movie: batman_begins, actor: Actor.find_by(name: "Katie Holmes"), character_name: "Rachel Dawes")
-Role.create(movie: batman_begins, actor: Actor.find_by(name: "Gary Oldman"), character_name: "Commissioner Gordon")
+don")
 
 
 # Prints a header for the movies output
