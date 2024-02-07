@@ -173,27 +173,6 @@ anne_hathaway["name"] = "Anne Hathwway"
 anne_hathaway.save
 
 
-puts "Actor: #{Actor.all.count}"
-
-
-bruce_wayne = Role.new
-bruce_wayne["character_name"] = "Bruce Wayne"
-bruce_wayne["movie_id"] = batman_begins["id"]
-bruce_wayne["actor_id"] = christian_bale["id"]
-bruce_wayne.save
-
-bruce_wayne = Role.new
-bruce_wayne["character_name"] = "Bruce Wayne"
-bruce_wayne["movie_id"] = the_dark_knight["id"]
-bruce_wayne["actor_id"] = christian_bale["id"]
-bruce_wayne.save
-
-bruce_wayne = Role.new
-bruce_wayne["character_name"] = "Bruce Wayne"
-bruce_wayne["movie_id"] = the_dark_knight_rises["id"]
-bruce_wayne["actor_id"] = christian_bale["id"]
-bruce_wayne.save
-
 # Batman Begins          Christian Bale        Bruce Wayne
 # Batman Begins          Michael Caine         Alfred
 # Batman Begins          Liam Neeson           Ra's Al Ghul
@@ -211,22 +190,17 @@ bruce_wayne.save
 # The Dark Knight Rises  Anne Hathaway         Selina Ky
 
 
+
+bruce_wayne = Role.new
+bruce_wayne["character_name"] = "Bruce Wayne"
+bruce_wayne["movie_id"] = batman_begins["id"]
+bruce_wayne["actor_id"] = christian_bale["id"]
+bruce_wayne.save
+
  
 alfred = Role.new
 alfred["character_name"] = "Alfred"
 alfred["movie_id"] = batman_begins["id"]
-alfred["actor_id"] = michael_cain["id"]
-alfred.save
-
-alfred = Role.new
-alfred["character_name"] = "Alfred"
-alfred["movie_id"] = the_dark_knight["id"]
-alfred["actor_id"] = michael_cain["id"]
-alfred.save
-
-alfred = Role.new
-alfred["character_name"] = "Alfred"
-alfred["movie_id"] = the_dark_knight_rises["id"]
 alfred["actor_id"] = michael_cain["id"]
 alfred.save
 
@@ -249,11 +223,14 @@ comissioner_gordon["movie_id"] = batman_begins["id"]
 comissioner_gordon["actor_id"] = gary_oldman["id"]
 comissioner_gordon.save
 
-comissioner_gordon = Role.new
-comissioner_gordon["character_name"] = "Commissioner Gordon"
-comissioner_gordon["movie_id"] = the_dark_knight_rises["id"]
-comissioner_gordon["actor_id"] = gary_oldman["id"]
-comissioner_gordon.save
+
+
+bruce_wayne = Role.new
+bruce_wayne["character_name"] = "Bruce Wayne"
+bruce_wayne["movie_id"] = the_dark_knight["id"]
+bruce_wayne["actor_id"] = christian_bale["id"]
+bruce_wayne.save
+
 
 joker = Role.new
 joker["character_name"] = "Joker"
@@ -266,6 +243,31 @@ harvey_dent["character_name"] = "Harvey Dent"
 harvey_dent["movie_id"] = the_dark_knight["id"]
 harvey_dent["actor_id"] = aaron_eckhart["id"]
 harvey_dent.save
+
+alfred = Role.new
+alfred["character_name"] = "Alfred"
+alfred["movie_id"] = the_dark_knight["id"]
+alfred["actor_id"] = michael_cain["id"]
+alfred.save
+
+rachel_dawes = Role.new
+rachel_dawes["character_name"] = "Rachel Dawes"
+rachel_dawes["movie_id"] = the_dark_knight["id"]
+rachel_dawes["actor_id"] = maggie_gyllenhal["id"]
+rachel_dawes.save
+
+bruce_wayne = Role.new
+bruce_wayne["character_name"] = "Bruce Wayne"
+bruce_wayne["movie_id"] = the_dark_knight_rises["id"]
+bruce_wayne["actor_id"] = christian_bale["id"]
+bruce_wayne.save
+
+comissioner_gordon = Role.new
+comissioner_gordon["character_name"] = "Commissioner Gordon"
+comissioner_gordon["movie_id"] = the_dark_knight_rises["id"]
+comissioner_gordon["actor_id"] = gary_oldman["id"]
+comissioner_gordon.save
+
 
 bane = Role.new
 bane["character_name"] = "Bane"
@@ -286,7 +288,6 @@ selina_kyle["movie_id"] = the_dark_knight_rises["id"]
 selina_kyle["actor_id"] = anne_hathaway["id"]
 selina_kyle.save
 
-puts "Role: #{Role.all.count}"
 
 # Prints a header for the movies output
 puts "Movies"
@@ -322,8 +323,11 @@ characters = Role.all
 
 for character in characters
 picture = Movie.find_by({"id" => character["movie_id"]})
-puts "#{picture["title"]}"
+cast = Actor.find_by({"id" => character["actor_id"]})
+role = character["character_name"]
+puts "#{picture["title"]} #{cast["name"]} #{role}"
 end
 
   # Close the database connection
 
+db.close
